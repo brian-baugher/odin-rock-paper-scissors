@@ -57,10 +57,31 @@ function game(){
 function rockGame() {
     let res = playRound('rock', getComputerChoice())
     if(res>0){console.log('you win')}
-    else{console.log('you lose')}
+    else if(res<0){console.log('you lose')}
+    else{console.log('tie')}
+}
+
+function paperGame() {
+    let res = playRound('paper', getComputerChoice())
+    if(res>0){console.log('you win')}
+    else if(res<0){console.log('you lose')}
+    else{console.log('tie')}
+}
+
+function scissorsGame() {
+    let res = playRound('scissors', getComputerChoice())
+    if(res>0){console.log('you win')}
+    else if(res<0){console.log('you lose')}
+    else{console.log('tie')}
 }
 
 const rock = document.querySelector('#rock')
 rock.addEventListener('click', () => rockGame())
+
+const paper = document.querySelector('#paper')
+paper.addEventListener('click', () => paperGame())
+
+const scissors = document.querySelector('#scissors')
+scissors.addEventListener('click', () => scissorsGame())
 
 //game()
