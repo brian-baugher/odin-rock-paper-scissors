@@ -54,10 +54,44 @@ function game(){
     }
 }
 
+function updateScores(){
+    player.textContent = `Player: ${playerCount}`
+    computer.textContent = `Computer: ${compCount}`
+} 
+
+function checkWin(){
+    if(count==5){
+        if(playerCount>compCount){
+            output.textContent = 'you win'
+            return true;
+        }
+        else{
+            output.textContent = 'you lose'
+            return true;
+        }
+    }
+    return false
+}
+
 function checkRes(res){
-    if(res>0){output.textContent = 'you win'}
-    else if(res<0){output.textContent = 'you lose'}
-    else{output.textContent = 'tie'}
+    if(checkWin()){return;}
+    if(res>0){
+        playerCount += 1
+        count = playerCount+compCount
+        updateScores();
+        output.textContent = ''
+        checkWin()
+    }
+    else if(res<0){
+        compCount += 1
+        count = playerCount+compCount
+        updateScores();
+        output.textContent = ''
+        checkWin()
+    }
+    else{
+        output.textContent = 'tie, try again'
+    }
 }
 
 function rockGame() {
@@ -75,6 +109,10 @@ function scissorsGame() {
     checkRes(res)
 }
 
+let count = 0;
+let compCount = 0;
+let playerCount = 0;
+
 const rock = document.querySelector('#rock')
 rock.addEventListener('click', () => rockGame())
 
@@ -84,10 +122,14 @@ paper.addEventListener('click', () => paperGame())
 const scissors = document.querySelector('#scissors')
 scissors.addEventListener('click', () => scissorsGame())
 
-const results = document.querySelector('#results')
+const scores = document.querySelector('.scores')
+const computer = document.querySelector('#comp')
+const player = document.querySelector('#player')
 
 let output = document.createElement('h3')
+output.style.width = '100px'
+output.style.textAlign = 'center'
 
-results.appendChild(output)
+scores.insertBefore(output, computer)
 
 //game()
