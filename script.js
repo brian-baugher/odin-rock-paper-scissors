@@ -54,4 +54,13 @@ function game(){
     }
 }
 
-game()
+function rockGame() {
+    let res = playRound('rock', getComputerChoice())
+    if(res>0){console.log('you win')}
+    else{console.log('you lose')}
+}
+
+const rock = document.querySelector('#rock')
+rock.addEventListener('click', () => rockGame())
+
+//game()
