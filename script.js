@@ -54,25 +54,25 @@ function game(){
     }
 }
 
+function checkRes(res){
+    if(res>0){output.textContent = 'you win'}
+    else if(res<0){output.textContent = 'you lose'}
+    else{output.textContent = 'tie'}
+}
+
 function rockGame() {
     let res = playRound('rock', getComputerChoice())
-    if(res>0){console.log('you win')}
-    else if(res<0){console.log('you lose')}
-    else{console.log('tie')}
+    checkRes(res)
 }
 
 function paperGame() {
     let res = playRound('paper', getComputerChoice())
-    if(res>0){console.log('you win')}
-    else if(res<0){console.log('you lose')}
-    else{console.log('tie')}
+    checkRes(res)
 }
 
 function scissorsGame() {
     let res = playRound('scissors', getComputerChoice())
-    if(res>0){console.log('you win')}
-    else if(res<0){console.log('you lose')}
-    else{console.log('tie')}
+    checkRes(res)
 }
 
 const rock = document.querySelector('#rock')
@@ -83,5 +83,11 @@ paper.addEventListener('click', () => paperGame())
 
 const scissors = document.querySelector('#scissors')
 scissors.addEventListener('click', () => scissorsGame())
+
+const results = document.querySelector('#results')
+
+let output = document.createElement('h3')
+
+results.appendChild(output)
 
 //game()
